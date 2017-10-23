@@ -25,8 +25,8 @@ class TodoContainer extends Component {
     let completedTodos = <CompletedTodos todosArr={false} />
 
     if( Array.isArray(this.state.todos) ) {
-      const activeTodosArr = this.state.todos.filter( todo => todo.status === 'active');
-      const completedTodosArr = this.state.todos.filter( todo => todo.status === 'done');
+      const activeTodosArr = this.state.todos.filter( todo => !todo.completed );
+      const completedTodosArr = this.state.todos.filter( todo => todo.completed );
 
       if( activeTodosArr.length > 0 ) {
         activeTodos = <ActiveTodos todosArr={activeTodosArr} />

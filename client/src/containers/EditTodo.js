@@ -6,22 +6,21 @@ import Header from '../components/Header'
 export class EditTodo extends Component {
 
   state = { 
-    text: '',
-    status: ''
+    task: '',
+    completed: false
   }
 
   handleInput = ev => {
     ev.preventDefault();  
     this.setState({
-      text: ev.target.value,
-      status: ev.target.id
+      task: ev.target.value
     })
   }
 
   resetForm = () => {
     this.setState({
-      text: '',
-      status: ''
+      task: '',
+      completed: false
     })
   }
 
@@ -33,11 +32,11 @@ export class EditTodo extends Component {
         <div className="row col-xs-12 col-md-offset-3" style={{marginTop: '15%'}}>
           <div className="col-md-6">
             <div className="input-group">
-              <input type="text" className="form-control" id="active" onChange={ this.handleInput }
-                  placeholder="Describe todo..." value={this.state.text} />
+              <input type="text" className="form-control" onChange={ this.handleInput }
+                  placeholder="Describe todo..." value={this.state.task} />
                 <span className="input-group-btn" 
                   onClick={()=>{ Actions.editTodo(id, {
-                    id, status: this.state.status, text: this.state.text
+                    id, completed: this.state.completed, task: this.state.task
                   }); this.resetForm() }} >
                 <button className="btn btn-default" type="button">Edit Todo</button>
               </span>

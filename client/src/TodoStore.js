@@ -2,10 +2,10 @@ import { Store } from 'reflux'
 import Actions from './Actions'
 
 const fetchTodos = () => [
-  { id: '1', status: 'active', text: 'Walk the dog' },
-  { id: '2', status: 'active', text: 'Cut the yard' },
-  { id: '3', status: 'done', text: 'Clean the pool' },
-  { id: '4', status: 'done', text: 'Trim the trees' }
+  { id: '1', completed: false, task: 'Walk the dog' },
+  { id: '2', completed: false, task: 'Cut the yard' },
+  { id: '3', completed: true, task: 'Clean the pool' },
+  { id: '4', completed: true, task: 'Trim the trees' }
 ]
 
 class TodoStore extends Store {
@@ -22,7 +22,7 @@ class TodoStore extends Store {
 
   markTodoDone(id) {
     const updatedTodos = [...this.state.todos].map( todo => {
-      if ( todo.id === id ) { todo.status = 'done'; return todo }
+      if ( todo.id === id ) { todo.completed = true; return todo }
       return todo;
     })
     this.setState({ todos: updatedTodos })

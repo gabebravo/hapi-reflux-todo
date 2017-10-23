@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "hapi": "^16.6.2"
+    "hapi": "^16.6.2",
+    "mongoose": "^4.12.4"
   },
   "scripts": {
     "start": "concurrently -r -k \"yarn run server\" \"yarn run client\"",

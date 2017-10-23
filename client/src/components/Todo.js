@@ -6,7 +6,7 @@ import Actions from '../Actions'
 class Todo extends Component {
 
   render() {
-    const buttons = this.props.parent === 'active' ?
+    const buttons = !this.props.isComplete ?
     (
       <div>
         <Link to={`/edit/${this.props.todoId}`}><span
