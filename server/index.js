@@ -1,7 +1,7 @@
 const db = require('./database').db;
 const Hapi = require('hapi');
 const server = new Hapi.Server();
-server.connection({ port: 3001, host: 'localhost' });
+server.connection({ port: process.env.PORT, host: 'client/build' });
 
 server.route({
     method: 'GET',
