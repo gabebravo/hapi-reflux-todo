@@ -15,7 +15,7 @@ const fetchTodos = () => {
 class TodoStore extends Store {
   constructor() {
     super();
-    this.state = { todos: null }
+    this.state = { todos: null, editTodo: null }
     this.listenables = Actions
   }
 

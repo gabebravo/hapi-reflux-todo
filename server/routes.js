@@ -31,7 +31,7 @@ module.exports = [
     method: 'PUT',
     path: '/api/todos',
     handler: (request, reply) => {         
-      Todo.findByIdAndUpdate( request.payload.id, {$set: request.payload}, {new:true})
+      Todo.findByIdAndUpdate( request.payload._id, {$set: request.payload}, {new:true})
         .then( todo => {
           reply(todo);
         }) 
