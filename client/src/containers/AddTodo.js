@@ -22,6 +22,14 @@ export class AddTodo extends Component {
     })
   }
 
+  submitNewTodo = () => {
+    if( this.state.task.length > 1 ) {
+      Actions.addTodo({ task: this.state.task }); 
+      this.resetForm();
+    }
+    this.resetForm();
+  }
+
   render() {
     return (
       <div>
@@ -32,7 +40,7 @@ export class AddTodo extends Component {
               <input type="text" className="form-control" onChange={ this.handleInput }
                 placeholder="Describe todo..." value={this.state.task} />
               <span className="input-group-btn" 
-                onClick={()=>{ Actions.addTodo({ task: this.state.task }); this.resetForm() }} >
+                onClick={this.submitNewTodo} >
                 <button className="btn btn-default" type="button">Add Todo</button>
               </span>
             </div>
