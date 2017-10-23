@@ -1,0 +1,18 @@
+.todos-center {
+  text-align: -webkit-center
+}
+
+.todo-width {
+  max-width: 40%;
+}
+
+.button-spacing {
+  width: 8rem;
+  margin-left: 1rem;
+}
+
+@media (max-width: 575px) { 
+  .todo-width {
+    max-width: 65%;
+  }
+ }
