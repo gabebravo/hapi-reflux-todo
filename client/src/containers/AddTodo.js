@@ -6,8 +6,7 @@ import Header from '../components/Header'
 export class AddTodo extends Component {
 
   state = { 
-    task: '',
-    completed: false
+    task: ''
   }
 
   handleInput = ev => {
@@ -19,8 +18,7 @@ export class AddTodo extends Component {
 
   resetForm = () => {
     this.setState({
-      task: '',
-      completed: false
+      task: ''
     })
   }
 
@@ -34,9 +32,7 @@ export class AddTodo extends Component {
               <input type="text" className="form-control" onChange={ this.handleInput }
                 placeholder="Describe todo..." value={this.state.task} />
               <span className="input-group-btn" 
-                onClick={()=>{ Actions.addTodo({
-                  id: '123', completed: this.state.completed, task: this.state.task
-                }); this.resetForm() }} >
+                onClick={()=>{ Actions.addTodo({ task: this.state.task }); this.resetForm() }} >
                 <button className="btn btn-default" type="button">Add Todo</button>
               </span>
             </div>

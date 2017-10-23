@@ -15,9 +15,7 @@ class TodoContainer extends Component {
   }
 
   componentDidMount(){
-    if( this.state.todos === null ) {
-      Actions.getTodos();
-    }
+    Actions.getTodos();
   }
 
   render() {

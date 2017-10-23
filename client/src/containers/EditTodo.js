@@ -35,7 +35,7 @@ export class EditTodo extends Component {
               <input type="text" className="form-control" onChange={ this.handleInput }
                   placeholder="Describe todo..." value={this.state.task} />
                 <span className="input-group-btn" 
-                  onClick={()=>{ Actions.editTodo(id, {
+                  onClick={()=>{ Actions.editTodo({
                     id, completed: this.state.completed, task: this.state.task
                   }); this.resetForm() }} >
                 <button className="btn btn-default" type="button">Edit Todo</button>

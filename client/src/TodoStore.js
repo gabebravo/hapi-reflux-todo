@@ -35,15 +35,14 @@ class TodoStore extends Store {
     this.setState({ todos: updatedTodos })
   }
 
-  editTodo(id, todoObj) {
-    const updatedTodos = [...this.state.todos].map( todo => {
-      if( todo.id === id ) {
-        return todoObj
-      } else {
-        return todo
-      }
+  editTodo(todoObj) {
+    axios.put('/api/todos', todoObj)
+    .then( response => {
+      console.log(response.data);
     })
-    this.setState({ todos: updatedTodos })
+    .catch( response => {
+      console.log(response.error)
+    })
   }
 
   removeTodo(id) {
@@ -52,8 +51,13 @@ class TodoStore extends Store {
   }
 
   addTodo(todoObj) {
-    const updatedTodos = [...this.state.todos, todoObj];
-    this.setState({ todos: updatedTodos })
+    axios.post('/api/todos', todoObj)
+    .then( response => {
+      console.log(response.data);
+    })
+    .catch( response => {
+      console.log(response.error)
+    })
   }
 }
 
