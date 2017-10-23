@@ -1,12 +1,16 @@
 import { Store } from 'reflux'
 import Actions from './Actions'
+import axios from 'axios'
 
-const fetchTodos = () => [
-  { id: '1', completed: false, task: 'Walk the dog' },
-  { id: '2', completed: false, task: 'Cut the yard' },
-  { id: '3', completed: true, task: 'Clean the pool' },
-  { id: '4', completed: true, task: 'Trim the trees' }
-]
+const fetchTodos = () => {
+  return axios.get('/api/todos')
+    .then( response => {
+      return response.data;
+    })
+    .catch( response => {
+      console.log(response.error)
+    })
+}
 
 class TodoStore extends Store {
   constructor() {
@@ -16,8 +20,11 @@ class TodoStore extends Store {
   }
 
   getTodos() {
-    const todos = fetchTodos();
-    this.setState({ todos })
+    fetchTodos()
+      .then( todos => {
+        if( Array.isArray(todos) )
+        this.setState({ todos })
+      })
   }
 
   markTodoDone(id) {

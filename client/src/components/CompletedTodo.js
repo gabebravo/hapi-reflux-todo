@@ -5,8 +5,8 @@ const printTodos = arr => {
   return arr.map( todo => {
     return (
       <Todo 
-        key={todo.id}
-        todoId={todo.id}
+        key={todo._id}
+        todoId={todo._id}
         isComplete={todo.completed}
         todoTask={todo.task}
       />
