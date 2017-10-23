@@ -39,5 +39,21 @@ module.exports = [
           console.error(error);
         });
     }
+  },
+  {
+    method: 'DELETE',
+    path: '/api/todos/{id}',
+    handler: (request, reply) => {       
+      Todo.findByIdAndRemove( request.params.id )
+        .then( todo => {
+          Todo.find({}, {__v: 0})
+            .then( todos => {
+              reply(todos);
+            })
+        })
+        .catch( error => {
+          console.error(error);
+        });
+    }
   }
 ];

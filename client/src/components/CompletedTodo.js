@@ -6,9 +6,7 @@ const printTodos = arr => {
     return (
       <Todo 
         key={todo._id}
-        todoId={todo._id}
-        isComplete={todo.completed}
-        todoTask={todo.task}
+        todoData={todo}
       />
     )
   })

@@ -6,22 +6,25 @@ import Actions from '../Actions'
 class Todo extends Component {
 
   render() {
-    const buttons = !this.props.isComplete ?
+    const { _id, completed, task } = this.props.todoData
+    const buttons = !completed ?
     (
       <div>
-        <Link to={`/edit/${this.props.todoId}`}><span
+        <Link to={`/edit/${_id}`}><span
         className="btn btn-primary button-spacing" 
           role="button">Edit</span></Link>
         <span
         className="btn btn-default button-spacing" 
-          onClick={() => Actions.markTodoDone(this.props.todoId)}
+          onClick={() => Actions.editTodo({
+            _id, completed: true, task
+          })}
           role="button">Done</span> 
       </div>
     ) : (
       <div>
         <span
         className="btn btn-primary button-spacing"
-          onClick={() => Actions.removeTodo(this.props.todoId)} 
+          onClick={() => Actions.removeTodo(_id)} 
           role="button">Remove</span>
       </div>
     )
@@ -31,7 +34,7 @@ class Todo extends Component {
         <div className="col-12">
           <div className="thumbnail">
             <div className="caption">
-              <h3>{this.props.todoTask}</h3>
+              <h3>{this.props.todoData.task}</h3>
                 {buttons}
             </div>
           </div>
