@@ -22,7 +22,7 @@ server.register(plugins, err => {
     path: '/{path*}',
     handler: {
       directory: {
-        path: Path.join(__dirname, '../client/build'),
+        path: Path.join(__dirname, 'build'),
         listing: false,
         index: true
       }
