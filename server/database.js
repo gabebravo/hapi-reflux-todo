@@ -1,7 +1,7 @@
 var Mongoose = require('mongoose');
 //load database
 Mongoose.Promise = global.Promise;
-Mongoose.connect(process.env.MONGODB_URI, {
+Mongoose.connect('mongodb://localhost/todos', {
     useMongoClient: true,
 });
 var db = Mongoose.connection;
