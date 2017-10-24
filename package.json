@@ -10,7 +10,7 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "yarn server/index.js"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
