@@ -1,23 +1,40 @@
 const db = require('./database').db;
 const Hapi = require('hapi');
+const Path = require('path')
+
+const plugins = [
+    require('inert')
+]
+
 const server = new Hapi.Server();
-server.connection({ port: process.env.PORT, host: 'client/build' });
 
-server.route({
-    method: 'GET',
-    path: '/api',
-    handler: function (request, reply) {
-        reply({'message': 'Hello, API!'});
-    }
-});
-
-const routes = require('./routes');
-server.route(routes);
-
-server.start((err) => {
-
+server.register(plugins, err => {
     if (err) {
-        throw err;
+      throw err
     }
-    console.log(`Server running at: ${server.info.uri}`);
-});
+  
+    server.connection({
+      host: process.env.HOST || 'localhost',
+      port: process.env.PORT || 3001
+    })
+  
+    server.route({
+      method: 'GET',
+      path: '/{path*}',
+      handler: {
+        directory: {
+          path: Path.join(__dirname, 'build'),
+          listing: false,
+          index: true
+        }
+      }
+    })
+  
+    server.start(err => {
+      if (err) {
+        throw err
+      }
+  
+      console.log(`Server running at ${server.info.uri}`)
+    })
+  })

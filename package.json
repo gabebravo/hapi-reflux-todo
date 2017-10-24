@@ -5,10 +5,12 @@
   "license": "MIT",
   "dependencies": {
     "hapi": "^16.6.2",
-    "mongoose": "^4.12.4"
+    "inert": "^4.2.1",
+    "mongoose": "^4.12.4",
+    "path": "^0.12.7"
   },
   "scripts": {
-    "start": "concurrently -r -k \"yarn run server\" \"yarn run client\"",
+    "start": "server/index.js",
     "server": "nodemon server/index.js",
     "client": "nodemon start-client.js"
   },
